@@ -1,0 +1,9 @@
+{
+"url-backend": "127.0.0.1",
+"port": 9999,
+
+
+"data-db-connection" : "mongodb+srv://Alexandra01:Mongo45_@cluster0.vsffrdc.mongodb.net/?retryWrites=true&w=majority",
+"name-db": "bd-registraduria"
+
+}
