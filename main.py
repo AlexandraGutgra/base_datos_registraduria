@@ -171,17 +171,50 @@ def eliminarResultado(id_resultado):
 def ResultadosCandidato(id_candidato):
     json=miControladorResultado.listarResultadosCandidato(id_candidato)
     return jsonify(json)
-###############################################################
 
+@app.route("/resultados/mesa/<string:id_mesa>",methods=['GET'])
+def ResultadosMesa(id_mesa):
+    json=miControladorResultado.listarResultadosMesa(id_mesa)
+    return jsonify(json)
+
+@app.route("/resultados/partido/<string:id_partido>",methods=['GET'])
+def ResultadosPartido(id_partido):
+    json=miControladorResultado.listarResultadosPartido(id_partido)
+    return jsonify(json)
+
+    "Obtener mayor numero de votos de candidato"
 @app.route("/resultados/votosmayores",methods=['GET'])
 def getMayorVotos():
     json=miControladorResultado.MayornumerovotosCandidato()
+    return jsonify(json)
+
+
+    "Obtener suma de de votos por candidato, ordenados de forma ascendente"
+@app.route("/resultados/votoscandidato/candidatos/<string:id_candidato>",methods=['GET'])
+def getSumaVotoscandidatoAscendente(id_candidato):
+    json=miControladorResultado.sumaVotoscandidatoAscendente(id_candidato)
+    return jsonify(json)
+
+"Obtener suma de votos por mesa ordenados de forma ascendente"
+
+@app.route("/resultados/votosmesa/mesas/<string:id_mesa>",methods=['GET'])
+def getSumaVotosmesaAscendente(id_mesa):
+    json=miControladorResultado.sumaVotosmesaAscendente(id_mesa)
+    return jsonify(json)
+
+
+"Obtener listado partidos politicos con votos filtrado por mesa"
+
+@app.route("/resultados/votospartido/partidos/<string:id_partido>",methods=['GET'])
+def getSumaVotospartidoAscendente(id_partido):
+    json=miControladorResultado.sumaVotospartidoAscendente(id_partido)
     return jsonify(json)
 
 def loadFileConfig():
     with open('config.json') as f:
         data = json.load(f)
     return data
+
 
 
 if __name__=='__main__':
