@@ -150,7 +150,7 @@ def getResultado(id):
     return jsonify(json)
 
 @app.route("/resultados/mesa/<string:id_mesa>/candidato/<string:id_candidato>",methods=['POST'])
-def crearResultado(id_mesa,id_candidato):
+def crearResultado(id_mesa, id_candidato):
     data = request.get_json()
     json=miControladorResultado.create(data,id_mesa,id_candidato)
     return jsonify(json)
@@ -214,8 +214,6 @@ def loadFileConfig():
     with open('config.json') as f:
         data = json.load(f)
     return data
-
-
 
 if __name__=='__main__':
     dataConfig = loadFileConfig()
